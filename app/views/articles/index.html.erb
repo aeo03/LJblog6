@@ -1,0 +1,27 @@
+<h1>Listing Articles</h1>
+ 
+<table class="table">
+ <thead class="thead-dark">
+  <tr>
+    <th scope="col">Title</th>
+    <th  scope="col">Text</th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+  </tr>
+ 
+  <% @articles.each do |article| %>
+
+   <tr>
+      <td class="desc"><%= article.title %></td>
+      <td  class="desc"><%= article.text %></td>
+      <td><%= link_to 'Edit', edit_article_path(article), class: "btn btn-warning"%></td>
+      <td><%= link_to 'Show', show_article_path(article), class: "btn btn-success" %></td>
+      <td><%= link_to 'Delete', delete_article_path(article),
+              method: :delete,
+              data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'New Article', new_article_path, class: "btn btn-primary" %>
